@@ -1,3 +1,25 @@
+<?php 
+
+if (empty($_GET['ID']))
+{
+header("Location: index.php");
+    exit();
+}
+else{
+$IDProducto=$_GET['ID'];
+
+            
+include './Server/database.php';
+
+session_start();
+
+    //MOSTRADOR DE PRODUCTOS EN OFERTA            
+    $sql ="SELECT * FROM ".$DBN."_Productos WHERE ID=".$IDProducto." ";
+    $result= $conn->query($sql);
+    if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+?>
 <!doctype html>
 <html lang="es">
 
@@ -48,13 +70,13 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#Ofertas">OFERTAS</a>
+                        <a class="nav-link" href="index.php#Ofertas">OFERTAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#Categorias">CATEGORIAS</a>
+                        <a class="nav-link" href="index.php#Categorias">CATEGORIAS</a>
                     </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
@@ -149,7 +171,7 @@
 <div class="container marketing">
         <div class="row">
         <div class="col-md-12">
-         <h1>Jeans Ultra</h1>
+         <h1><?php echo $row["Nombre"]; ?></h1>
         <h6 class="mb-3 mt-4">Colores</h6>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
@@ -241,3 +263,4 @@
     <script src="js/holder.min.js"></script>
     <script src="js/script.js"></script>
 </body></html>
+<?php   } } }; ?>

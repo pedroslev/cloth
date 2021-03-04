@@ -1,3 +1,18 @@
+<?php 
+
+if (empty($_GET['Categoria']))
+{
+header("Location: index.php");
+    exit();
+}
+else{
+$Categoria=$_GET['Categoria'];
+
+            
+include './Server/database.php';
+
+session_start();
+?>
 <!doctype html>
 <html lang="es">
 
@@ -48,13 +63,13 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#Ofertas">OFERTAS</a>
+                        <a class="nav-link" href="index.php#Ofertas">OFERTAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#Categorias">CATEGORIAS</a>
+                        <a class="nav-link" href="index.php#Categorias">CATEGORIAS</a>
                     </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
@@ -98,29 +113,38 @@
             
             <div class="row justify-content-center m-5">
 <h1 class="text-dark">Categorías</h1>
-           
-            </div>
-            <hr class="featurette-divider">
-            <div id="categoria" class="row featurette descrip-1">
+</div>
+               
+
+    <?php 
+    //MOSTRADOR DE PRODUCTOS DE CATEGORIA            
+    $sql ="SELECT * FROM ".$DBN."_Productos WHERE Categoria='".$Categoria."' ";
+    $result= $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+                $cont=1;
+                while($row = $result->fetch_assoc()) { 
+            ?>
+            <div class="row featurette descrip-<?php echo $cont; ?>">
                 <div class="col-md-6">
                     <div class="card   shadow ">
-                        <img src="img/Prueba/Pantalones.jpg" class="img-fluid  " alt="...">
+                        <img src="<?php echo $row["Foto"]; ?>" class="img-fluid  " alt="...">
                         <div class="card-body d-md-none">
-                            <h5 class="card-title">Jeans Ultra</h5>
-                            <h5>1200$</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. <a href="item.html" class="btn-see-more">Ver Más</a></p>
+                            <h5 class="card-title"><?php echo $row["Nombre"]; ?></h5>
+                            <h5>$<?php echo $row["PrecioML"]; ?></h5>
+                            <p class="card-text"><?php echo $row["Descripcion"]; ?><a href="item.php?ID=<?php echo $row["ID"]; ?>" class="btn-see-more">Ver Más</a></p>
 
-                            <a href="#" data-name="Jeans" data-price="80" class="add-to-cart btn line">Agregar al Carrito</a>
+                            <a href="#" data-name="<?php echo $row["ID"]; ?>" data-price="<?php echo $row["PrecioML"]; ?>" class="add-to-cart btn line">Agregar al Carrito</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="display-n">
-                        <h5 class="card-title">Jeans Ultra</h5>
-                        <h5>1200$</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. <a href="item.html" class="btn-see-more">Ver Más</a></p>
+                        <h5 class="card-title"><?php echo $row["Nombre"]; ?></h5>
+                        <h5>$<?php echo $row["PrecioML"]; ?></h5>
+                        <p class="card-text"><?php echo $row["Descripcion"]; ?><a href="item.php?ID=<?php echo $row["ID"]; ?>" class="btn-see-more">Ver Más</a></p>
 
-                        <a href="#" data-name="Jeans" data-price="80" class="add-to-cart btn line">Agregar al Carrito</a>
+                        <a href="#" data-name="<?php echo $row["ID"]; ?>" data-price="<?php echo $row["PrecioML"]; ?>" class="add-to-cart btn line">Agregar al Carrito</a>
 
                     </div>
                 </div>
@@ -128,72 +152,13 @@
 
             <hr class="featurette-divider">
 
-            <div class="row featurette descrip-2">
-                <div class="col-md-6">
-                    <div class="card   shadow ">
-                        <img src="img/Prueba/Jeans1.jpg" class="img-fluid  " alt="...">
-                        <div class="card-body gradient d-md-none">
-                            <h5 class="card-title">Jean Slim Fit</h5>
-                            <h5>1200$</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. <a href="item.html" class="btn-see-more">Ver Más</a></p>
+            <?php  $cont++; }  } else { //deberia mostrarlo mas lindo ?>
 
-                            <a href="#" data-name="Jeans" data-price="80" class="add-to-cart btn line">Agregar al Carrito</a>
-
-                        </div>
-
-
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="display-n">
-                        <h5 class="card-title">Jean Slim Fit</h5>
-                        <h5>1200$</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. <a href="item.html" class="btn-see-more">Ver Más</a></p>
-
-                        <a href="#" data-name="Jeans" data-price="80" class="add-to-cart btn line">Agregar al Carrito</a>
-
-                    </div>
-                </div>
-            </div>
-
-
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette descrip-1">
-                <div class="col-md-6">
-                    <div class="card   shadow ">
-                        <img src="img/Prueba/Jeans2.jpg" class="img-fluid  " alt="...">
-                        <div class="card-body d-md-none">
-                            <h5 class="card-title">Jean D+</h5>
-                            <h5>1200$</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. <a href="item.html" class="btn-see-more">Ver Más</a></p>
-
-                            <a href="#" data-name="Jeans" data-price="80" class="add-to-cart btn line">Agregar al Carrito</a>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="display-n">
-                        <h5 class="card-title">Jean D+</h5>
-                        <h5>1200$</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. <a href="item.html" class="btn-see-more">Ver Más</a></p>
-
-                        <a href="#" data-name="Jeans" data-price="80" class="add-to-cart btn line">Agregar al Carrito</a>
-
-                    </div>
-                </div>
-
-
-
-
-
-
-
-            </div>
-            <!-- FIN OFERTAS -->
+            NO HAY PRODUCTOS
+         
+            <?php }  ?> 
+            
+   
 
         </div><!-- /.container -->
 
@@ -222,3 +187,4 @@
     <script src="js/holder.min.js"></script>
     <script src="js/script.js"></script>
 </body></html>
+<?php }; ?>

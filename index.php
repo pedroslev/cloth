@@ -164,21 +164,24 @@ session_start();
             </div>
             <hr class="featurette-divider">
             <?php 
-                //MOSTRADOR DE PRODUCTOS (LISTADO)
-                if (isset($_POST['BuscarProducto'])) {               
-                $sql ="SELECT * FROM .$DBN._Productos WHERE Oferta != 0 ";
+                //MOSTRADOR DE PRODUCTOS EN OFERTA            
+                $sql ="SELECT * FROM ".$DBN."_Productos WHERE Oferta!='0' ";
                 $result= $conn->query($sql);
                 if ($result->num_rows > 0) {
-                // output data of each row
-                while($row = $result->fetch_assoc()) {
+                // Contador clase
+                $cont=2;
+                $clase=null;
+                while($row = $result->fetch_assoc()) { 
+                $aux=(intval($cont/2))*2;// hace al valor entero
+                 if ($aux=$cont) {$clase=1}else{$clase=2};// Compara si es positivo o negativo
             ?>
-            <div class="row featurette descrip-1">
+            <div class="row featurette descrip-<?php echo $clase; ?>">
                 <div class="col-md-6">
                     <div class="card   shadow ">
                         <img src="<?php echo $row["Foto"]; ?>" class="img-fluid  " alt="...">
                         <div class="card-body d-md-none">
                             <h5 class="card-title"><?php echo $row["Nombre"]; ?></h5>
-                            <h5><?php echo $row["PrecioML"]; ?></h5>
+                            <h5>$<?php echo $row["PrecioML"]; ?></h5>
                             <p class="card-text"><?php echo $row["Descripcion"]; ?><a href="item.php?ID=<?php echo $row["ID"]; ?>" class="btn-see-more">Ver Más</a></p>
 
                             <a href="#" data-name="<?php echo $row["ID"]; ?>" data-price="<?php echo $row["PrecioML"]; ?>" class="add-to-cart btn line">Agregar al Carrito</a>
@@ -188,8 +191,8 @@ session_start();
                 <div class="col-md-6">
                     <div class="display-n">
                         <h5 class="card-title"><?php echo $row["Nombre"]; ?></h5>
-                        <h5><?php echo $row["PrecioML"]; ?></h5>
-                        <p class="card-text"><?php echo $row["Descripcion"]; ?><a href="#item.php?ID=<?php echo $row["ID"]; ?>" class="btn-see-more">Ver Más</a></p>
+                        <h5>$<?php echo $row["PrecioML"]; ?></h5>
+                        <p class="card-text"><?php echo $row["Descripcion"]; ?><a href="item.php?ID=<?php echo $row["ID"]; ?>" class="btn-see-more">Ver Más</a></p>
 
                         <a href="#" data-name="<?php echo $row["ID"]; ?>" data-price="<?php echo $row["PrecioML"]; ?>" class="add-to-cart btn line">Agregar al Carrito</a>
 
@@ -199,82 +202,14 @@ session_start();
 
             <hr class="featurette-divider">
 
-            <?php   } } else {  ?>
+            <?php  $cont++; }  } else { //deberia mostrarlo mas lindo ?>
 
-            <tr>
             NO HAY OFERTAS
-            <tr>
-            <?php } } else { ?> 
-            buscate algo
-            <?php     }?>  
-
-            <div class="row featurette descrip-2">
-                <div class="col-md-6">
-                    <div class="card   shadow ">
-                        <img src="img/Prueba/Remera.jpg" class="img-fluid  " alt="...">
-                        <div class="card-body gradient d-md-none">
-                            <h5 class="card-title">Remera Slim Fit</h5>
-                            <h5>1200$</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. <a href="item.html" class="btn-see-more">Ver Más</a></p>
-
-                            <a href="#" data-name="Jeans" data-price="80" class="add-to-cart btn line">Agregar al Carrito</a>
-
-                        </div>
-
-
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="display-n">
-                        <h5 class="card-title">Remera Slim Fit</h5>
-                        <h5>1200$</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. <a href="#" class="btn-see-more">Ver Más</a></p>
-
-                        <a href="item.html" data-name="Jeans" data-price="80" class="add-to-cart btn line">Agregar al Carrito</a>
-
-                    </div>
-                </div>
-            </div>
-
-
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette descrip-1">
-                <div class="col-md-6">
-                    <div class="card   shadow ">
-                        <img src="img/Prueba/Zapatillas.jpg" class="img-fluid  " alt="...">
-                        <div class="card-body d-md-none">
-                            <h5 class="card-title">Nike Air Jordan</h5>
-                            <h5>1200$</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. <a href="item.html" class="btn-see-more">Ver Más</a></p>
-
-                            <a href="item.html" data-name="Jeans" data-price="80" class="add-to-cart btn line">Agregar al Carrito</a>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="display-n">
-                        <h5 class="card-title">Nike Air Jordan</h5>
-                        <h5>1200$</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. <a href="#" class="btn-see-more">Ver Más</a></p>
-
-                        <a href="#item.html" data-name="Jeans" data-price="80" class="add-to-cart btn line">Agregar al Carrito</a>
-
-                    </div>
-                </div>
-
-
-
-
-
-
-
-            </div>
+         
+            <?php }  ?> 
+    
             <!-- FIN OFERTAS -->
-            <hr class="featurette-divider">
+  
 
 
 
@@ -283,30 +218,30 @@ session_start();
                 <div class="col-lg-4">
                     <img class="rounded-circle shadow" src="img/Icons/pantalones.svg" alt="Generic placeholder image" width="140" height="140">
                     <h2>Jeans</h2>
-                    <p><a class="btn btn-secondary" href="categoria.html" role="button">Ver Más &raquo;</a></p>
+                    <p><a class="btn btn-secondary" href="categoria.php?Categoria=Pantalones" role="button">Ver Más &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4">
                     <img class="rounded-circle shadow" src="img/Icons/t-shirt.svg" alt="Generic placeholder image" width="140" height="140">
                     <h2>Remeras</h2>
-                    <p><a class="btn btn-secondary" href="categoria.html" role="button">Ver Más &raquo;</a></p>
+                    <p><a class="btn btn-secondary" href="categoria.php?Categoria=Remeras" role="button">Ver Más &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4">
                     <img class="rounded-circle shadow" src="img/Icons/sweater.svg" alt="Generic placeholder image" width="140" height="140">
-                    <h2>Buzos</h2>
-                    <p><a class="btn btn-secondary" href="categoria.html" role="button">Ver Más &raquo;</a></p>
+                    <h2>Camisas</h2>
+                    <p><a class="btn btn-secondary" href="categoria.php?Categoria=Camisas" role="button">Ver Más &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
             </div>
 
             <div id="Categorias" class="row">
                 <div class="col-lg-4">
                     <img class="rounded-circle shadow" src="img/Icons/zapatillas.svg" alt="Generic placeholder image" width="140" height="140">
-                    <h2>Zapatillas</h2>
-                    <p><a class="btn btn-secondary" href="categoria.html" role="button">Ver Más &raquo;</a></p>
+                    <h2>Calzado</h2>
+                    <p><a class="btn btn-secondary" href="categoria.php?Categoria=Calzado" role="button">Ver Más &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4">
                     <img class="rounded-circle shadow" src="img/Icons/campera.svg" alt="Generic placeholder image" width="140" height="140">
-                    <h2>Camperas</h2>
-                    <p><a class="btn btn-secondary" href="categoria.html" role="button">Ver Más &raquo;</a></p>
+                    <h2>Abrigo</h2>
+                    <p><a class="btn btn-secondary" href="categoria.php?Categoria=Abrigo" role="button">Ver Más &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
             </div>
             <!-- FIN cATEGORIAS -->
