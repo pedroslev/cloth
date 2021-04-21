@@ -187,6 +187,11 @@ h1 {
     font-weight: 700;
 }
 
+div button a {
+    color: white;
+    font-family: inter;
+    text-transform: capitalize;
+}
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
