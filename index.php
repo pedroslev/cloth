@@ -211,32 +211,35 @@ session_start();
 
 
 
-            <!-- CATEGORIAS -->
-            <div id="Categorias" class="row">
-            <?php 
-                //MOSTRADOR DE CATEGORIAS            
-                $sql ="SELECT * FROM ".$DBN."_Categorias ";
-                $result= $conn->query($sql);
-
-                if ($result->num_rows > 0) {
-                            
-                while($row = $result->fetch_assoc()) {            
-            ?>
-
+           <!-- CATEGORIAS -->
+           <div id="Categorias" class="row">
                 <div class="col-lg-4">
-                    <span class="rounded-circle shadow" data-feather="<?php echo $row["Icono"]; ?>" width="140" height="140"></span>
-                    <h2><?php echo $row["Nombre"]; ?></h2>
-                    <p><a class="btn btn-secondary" href="categoria.php?Categoria=<?php echo $row["Nombre"]; ?>" role="button">Ver Más &raquo;</a></p>
-                </div>
-
-            <?php   }  } else {  ?>
-
-            NO HAY Categorias
-
-            <?php } ; ?> 
+                    <img class="rounded-circle shadow" src="img/Icons/pantalones.svg" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Jeans</h2>
+                    <p><a class="btn btn-secondary" href="categoria.php?Categoria=Pantalones" role="button">Ver Más &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img class="rounded-circle shadow" src="img/Icons/t-shirt.svg" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Remeras</h2>
+                    <p><a class="btn btn-secondary" href="categoria.php?Categoria=Remeras" role="button">Ver Más &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img class="rounded-circle shadow" src="img/Icons/sweater.svg" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Camisas</h2>
+                    <p><a class="btn btn-secondary" href="categoria.php?Categoria=Camisas" role="button">Ver Más &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
             </div>
-
-            <!-- FIN cATEGORIAS -->
+             <div id="Categorias" class="row">
+                <div class="col-lg-4">
+                    <img class="rounded-circle shadow" src="img/Icons/zapatillas.svg" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Calzado</h2>
+                    <p><a class="btn btn-secondary" href="categoria.php?Categoria=Calzado" role="button">Ver Más &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img class="rounded-circle shadow" src="img/Icons/campera.svg" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Abrigo</h2>
+                    <p><a class="btn btn-secondary" href="categoria.php?Categoria=Abrigo" role="button">Ver Más &raquo;</a></p>
+                </div><!-- /.col-lg-4 -->
 
         </div><!-- /.container -->
 
