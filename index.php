@@ -48,7 +48,7 @@ session_start();
 
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-orange shadow">
-            <a class="navbar-brand" href="index.html">CLOTH</a>
+            <a class="navbar-brand" href="index.php">CLOTH</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -92,7 +92,7 @@ session_start();
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn btn-cart">Ordenar</button>
+                        <button type="button" class="btn btn btn-cart"> <a href="checkouts.html">Ordenar</a></button>
                     </div>
                 </div>
             </div>
