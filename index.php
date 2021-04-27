@@ -184,7 +184,7 @@ session_start();
                             <h5>$<?php echo $row["PrecioML"]; ?></h5>
                             <p class="card-text"><?php echo $row["Descripcion"]; ?><a href="item.php?ID=<?php echo $row["ID"]; ?>" class="btn-see-more">Ver Más</a></p>
 
-                            <a href="#" data-name="<?php echo $row["ID"]; ?>" data-price="<?php echo $row["PrecioML"]; ?>" class="add-to-cart btn line">Agregar al Carrito</a>
+                            <a href="#" data-name="<?php echo $row["Nombre"]; ?>" data-id="<?php echo $row["ID"]; ?>" data-price="<?php echo $row["PrecioML"]; ?>" class="add-to-cart btn line">Agregar al Carrito</a>
                         </div>
                     </div>
                 </div>
@@ -194,7 +194,7 @@ session_start();
                         <h5>$<?php echo $row["PrecioML"]; ?></h5>
                         <p class="card-text"><?php echo $row["Descripcion"]; ?><a href="item.php?ID=<?php echo $row["ID"]; ?>" class="btn-see-more">Ver Más</a></p>
 
-                        <a href="#" data-name="<?php echo $row["ID"]; ?>" data-price="<?php echo $row["PrecioML"]; ?>" class="add-to-cart btn line">Agregar al Carrito</a>
+                        <a href="#" data-name="<?php echo $row["Nombre"]; ?>" data-id="<?php echo $row["ID"]; ?>" data-price="<?php echo $row["PrecioML"]; ?>" class="add-to-cart btn line">Agregar al Carrito</a>
 
                     </div>
                 </div>
