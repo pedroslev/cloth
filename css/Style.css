@@ -49,6 +49,12 @@ div a {
     text-transform: uppercase
 }
 
+div button a {
+    color: white;
+    font-family: inter;
+    text-transform: capitalize;
+}
+
 div a:hover {
     transition-duration: 0.3s;
     transition-property: transform;
