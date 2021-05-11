@@ -48,7 +48,7 @@ session_start();
 
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-orange shadow">
-            <a class="navbar-brand" href="index.php">CLOTH</a>
+            <a class="navbar-brand" href="index.html">CLOTH</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -92,7 +92,7 @@ session_start();
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn btn-cart"> <a href="checkouts.html">Ordenar</a></button>
+                        <button type="button" class="btn btn btn-cart">Ordenar</button>
                     </div>
                 </div>
             </div>
@@ -184,7 +184,7 @@ session_start();
                             <h5>$<?php echo $row["PrecioML"]; ?></h5>
                             <p class="card-text"><?php echo $row["Descripcion"]; ?><a href="item.php?ID=<?php echo $row["ID"]; ?>" class="btn-see-more">Ver Más</a></p>
 
-                            <a href="#" data-name="<?php echo $row["Nombre"]; ?>" data-id="<?php echo $row["ID"]; ?>" data-price="<?php echo $row["PrecioML"]; ?>" class="add-to-cart btn line">Agregar al Carrito</a>
+                            <a href="#" data-name="<?php echo $row["ID"]; ?>" data-price="<?php echo $row["PrecioML"]; ?>" class="add-to-cart btn line">Agregar al Carrito</a>
                         </div>
                     </div>
                 </div>
@@ -194,7 +194,7 @@ session_start();
                         <h5>$<?php echo $row["PrecioML"]; ?></h5>
                         <p class="card-text"><?php echo $row["Descripcion"]; ?><a href="item.php?ID=<?php echo $row["ID"]; ?>" class="btn-see-more">Ver Más</a></p>
 
-                        <a href="#" data-name="<?php echo $row["Nombre"]; ?>" data-id="<?php echo $row["ID"]; ?>" data-price="<?php echo $row["PrecioML"]; ?>" class="add-to-cart btn line">Agregar al Carrito</a>
+                        <a href="#" data-name="<?php echo $row["ID"]; ?>" data-price="<?php echo $row["PrecioML"]; ?>" class="add-to-cart btn line">Agregar al Carrito</a>
 
                     </div>
                 </div>
@@ -211,8 +211,8 @@ session_start();
 
 
 
-           <!-- CATEGORIAS -->
-           <div id="Categorias" class="row">
+ <!-- CATEGORIAS -->
+ <div id="Categorias" class="row">
                 <div class="col-lg-4">
                     <img class="rounded-circle shadow" src="img/Icons/pantalones.svg" alt="Generic placeholder image" width="140" height="140">
                     <h2>Jeans</h2>
@@ -242,6 +242,8 @@ session_start();
                 </div><!-- /.col-lg-4 -->
 
         </div><!-- /.container -->
+            <!-- FIN CATEGORIAS -->
+
 
 
         <hr class="featurette-divider">
@@ -258,7 +260,10 @@ session_start();
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
-    <script src="js/jquery-slim.min.js" ></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/jquery-slim.min.js"><\/script>')
+    </script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
