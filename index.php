@@ -92,7 +92,7 @@ session_start();
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn btn-cart">Ordenar</button>
+                        <button type="button" class="btn btn btn-cart"> <a href="checkouts.html">Ordenar</a></button>
                     </div>
                 </div>
             </div>
