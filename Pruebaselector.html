@@ -25,7 +25,9 @@ document.getElementById('app').addEventListener('click',fetchData)
         .then(data=>{
             console.log(data.localidades)
             const html = data.localidades.map(localidad => {
-                return '<p> Provincia: ' + localidad.provincia.nombre + '</p>'
+                
+                    return '<p> Provincia: ' + localidad.provincia.nombre + '</p>'
+                
             })
             console.log(html)
             document.getElementById('app').innerHTML = '<option>' + html + '</option>'
