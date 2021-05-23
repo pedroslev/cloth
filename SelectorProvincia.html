@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="dynamic_slct" class="selectElement"></select>
+</body>
+<script>
+    var provincias = [
+
+    ]
+    var options = '';
+slctbox = document.getElementById('dynamic_slct')
+for(var i=0 ; i<localidades.length ; i++)
+{
+
+    var model = localidades[i]['nombre']; 
+    var opt = document.createElement('option');
+    slctbox.options.add(new Option(model));
+}
+
+let selectElement = document.getElementsByClassName("selectElement");
+let valueSelected = selectElement.options[selectElement.selectedIndex].value;
+var text= selectElement.options[selectElement.selectedIndex].text; //get the selected option text
+</script>
+</html>
