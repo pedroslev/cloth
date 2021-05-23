@@ -107711,10 +107711,10 @@ var options = '';
 slctbox = document.getElementById('dynamic_slct')
 for(var i=0 ; i<localidades.length ; i++)
 {
-    var label = localidades[i].provincia['nombre'];
+    //var label = localidades[i].provincia['nombre'];
     var model = localidades[i]['nombre']; //or whatever the value you want to show
     var opt = document.createElement('option');
-    slctbox.options.add(new Option(label, model));
+    slctbox.options.add(new Option(model));
 }
 
 let selectElement = document.getElementsByClassName("selectElement");
