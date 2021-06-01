@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <select name="" id="dynamic_slct_prov" class="provselectElement_prov"></select>
-</body>
-<script>
     var provincias = [
 {
 "nombre_completo": "Provincia de Misiones",
@@ -324,20 +312,20 @@
 }
 }
     ]
-    provincias.sort(nombre)
+    
     var options = '';
 provslctbox = document.getElementById('dynamic_slct_prov')
 for(var i=0 ; i<provincias.length ; i++)
-{
-
-    var model = provincias[i]['nombre']; 
+{   
+    var model = provincias[i]['nombre']
     var opt = document.createElement('option');
     provslctbox.options.add(new Option(model));
 }
+
+
 
 let provselectElement = document.getElementsByClassName("provselectElement_prov");
 let provValueSelected = provselectElement.options[provselectElement.selectedIndex].value;
 var provtext= provselectElement.options[provselectElement.selectedIndex].provtext; //get the selected option provtext
 
-</script>
-</html>
+
