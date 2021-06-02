@@ -171,7 +171,7 @@
 
                             <div class="col-md-6">
                                 <label for="state" class="form-label">Provincia</label>
-                                <select class="form-selector" id="selector"></select>
+                                <select class="form-select col-md-6 provselectElement_prov" id="dynamic_slct_prov"></select>
                                 <div class="invalid-feedback">
                                     Ingrese una provinicia valida.
                                 </div>
@@ -179,11 +179,7 @@
 
                             <div class="col-md-6">
                                 <label for="state" class="form-label">Localidad</label>
-                                <select class="form-select" id="state" required>
-                                    <option value="">Elegir...
-                                    </option>
-                                    <option>Capital Federal</option>
-                                </select>
+                                <select class="form-select col-md-6 selectElement" id="dynamic_slct" required></select>
                                 <div class="invalid-feedback">
                                     Ingrese una provinicia valida.
                                 </div>
@@ -250,7 +246,8 @@
     <script>
         feather.replace()
     </script>
-    <script src="js/selectprov.js"></script>
+    <script src="js/provincias.js"></script>
+    <script src="js/localidades.js"></script>
 
 </body>
 
